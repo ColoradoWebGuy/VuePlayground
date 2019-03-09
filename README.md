@@ -14,3 +14,4 @@ ColoradoWebGuy's Playground with Vue.js
 ## Links
 
 * Vue Mastery: https://www.vuemastery.com/
+* Getting Started With VueJS: https://tutorialedge.net/javascript/vuejs/getting-started-with-vuejs/
