@@ -1,4 +1,4 @@
-# Project Title
+# ColoradoWebGuy's Vue.js Playground
 
 ColoradoWebGuy's Playground with Vue.js
 
