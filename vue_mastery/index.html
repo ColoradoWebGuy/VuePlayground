@@ -13,7 +13,11 @@
             </div>
             <div class="product-info">
                 <h1>{{ product }}</h1>
-                <a :href="link" target="_blank">Click here for the lesson learned</a>
+                <!--  If inStock is truthy, the first paragraph will render.
+                    Otherwise, the second paragraph will. -->
+                <p v-if="inventory > 10">In Stock <span v-show="onSale">- On Sale!</span></p>
+                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                <p v-else>Out of stock</p>
             </div>
         </div>
     </div>
