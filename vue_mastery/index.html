@@ -2,13 +2,22 @@
 <html lang="en">
 <head>
     <title>VueJS Starter</title>
+    <link rel="stylesheet" href="./assets/product_style.css" />
 </head>
 <body>
+
     <div id="app">
-        <!-- Vue's Expression Introducing Reactivity -->
-        <h1>{{ product }}</h2>
-        <p>{{ description }}</p>
+        <div class="product">
+            <div class="product-image">
+                <img :src="image" :alt="altText" />
+            </div>
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <a :href="link" target="_blank">Click here for the lesson learned</a>
+            </div>
+        </div>
     </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="main.js"></script>
 </body>
