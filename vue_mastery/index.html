@@ -18,7 +18,7 @@
                 <h1>{{ product }}</h1>
                 <p v-if="inStock">In Stock</p>
                 <p v-else
-                    :class="{ strikeThrough: !inStock }"
+                    :class="{ 'strike-through': !inStock }"
                     >
                     Out of stock
                 </p>
