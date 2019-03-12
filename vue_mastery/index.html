@@ -11,8 +11,9 @@
     <div id="app">
         <div class="product">
             <div class="product-image">
-                <img :src="image" :alt="altText" />
+                <img :src="image" />
             </div>
+
             <div class="product-info">
                 <h1>{{ product }}</h1>
                 <p v-if="inStock">In Stock</p>
@@ -22,23 +23,31 @@
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
 
-                <ul>
-                    <li v-for="size in sizes">{{ size }}</li>
-                </ul>
-
-                <!-- Note that it is recommended to use a special key
-                attribute when rendering elements like this so that
-                Vue can keep track of each node’s identity.
-                We’ll add that in, using our variant’s unique
-                variantId property. -->
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p>{{ variant.variantColor }}</p>
+                    <p @mouseover="updateProduct(variant.variantImage)">
+                        {{ variant.variantColor }}
+                    </p>
                 </div>
+
+                <button v-on:click="addToCart">
+                    Add to Cart
+                </button>
+                <br />
+                <button v-on:click="subtractFromCart">
+                    Subtract from Cart
+                </button>
+
+                <div class="cart">
+                    <p>Cart ({{ cart }})</p>
+                <div>
             </div>
+
         </div>
     </div>
 
-    <script src="https://unpkg.com/vue"></script>
-    <script src="main.js"></script>
+    <footer>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="main.js"></script>
+    </footer>
 </body>
 </html>
