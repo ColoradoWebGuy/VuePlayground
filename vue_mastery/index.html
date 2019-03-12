@@ -6,6 +6,8 @@
 </head>
 <body>
 
+    <div class="nav-bar"></div>
+
     <div id="app">
         <div class="product">
             <div class="product-image">
@@ -13,11 +15,25 @@
             </div>
             <div class="product-info">
                 <h1>{{ product }}</h1>
-                <!--  If inStock is truthy, the first paragraph will render.
-                    Otherwise, the second paragraph will. -->
-                <p v-if="inventory > 10">In Stock <span v-show="onSale">- On Sale!</span></p>
-                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                <p v-if="inStock">In Stock</p>
                 <p v-else>Out of stock</p>
+
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+
+                <ul>
+                    <li v-for="size in sizes">{{ size }}</li>
+                </ul>
+
+                <!-- Note that it is recommended to use a special key
+                attribute when rendering elements like this so that
+                Vue can keep track of each node’s identity.
+                We’ll add that in, using our variant’s unique
+                variantId property. -->
+                <div v-for="variant in variants" :key="variant.variantId">
+                    <p>{{ variant.variantColor }}</p>
+                </div>
             </div>
         </div>
     </div>
