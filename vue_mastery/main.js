@@ -4,7 +4,7 @@ var app = new Vue({
      data: {
         product: 'Socks',
         image: './assets/vmSocks-green.jpg',
-        inStock: true,
+        inStock: false,
         details: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
           {
@@ -24,13 +24,6 @@ var app = new Vue({
          addToCart() {
              this.cart += 1
          },
-         subtractFromCart() {
-             this.cart -= 1
-         },
-         // Instead of writing out an anonymous function like
-         // updateProduct: function(variantImage), we can use the ES6
-         // shorthand and just say updateProduct(variantImage).
-         // These are equivalent ways of saying the same thing.
          updateProduct(variantImage) {
              this.image = variantImage
          }
