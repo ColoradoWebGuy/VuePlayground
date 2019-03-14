@@ -9,51 +9,7 @@
     <div class="nav-bar"></div>
 
     <div id="app">
-        <div class="product">
-            <div class="product-image">
-                <img :src="image" />
-            </div>
-
-            <div class="product-info">
-                <h1>{{ title }}</h1>
-                <p v-if="inStock">In Stock</p>
-                <p v-else
-                    :class="{ 'strike-through': !inStock }"
-                    >
-                    Out of stock
-                </p>
-                <p>{{ sale }}</p>
-
-                <ul>
-                    <li v-for="detail in details">{{ detail }}</li>
-                </ul>
-
-                <div class="color-box"
-                    v-for="(variant, index) in variants"
-                    :key="variant.variantId"
-                    :style="{ backgroundColor: variant.variantColor }"
-                    @mouseover="updateProduct(index)"
-                    >
-                </div>
-
-                <!-- We can use expressions inside an element’s class binding
-                    to evaluate whether a class should appear or not -->
-
-                <!-- ** You can calso bind an entire class object or array of
-                    classes to an element. See ex. below -->
-                <!--  <div :class="[activeClass, errorClass]"></div> -->
-                <button v-on:click="addToCart"
-                    :disabled="!inStock"
-                    :class="{ disabledButton: !inStock}"
-                    >Add to Cart
-                </button>
-
-                <div class="cart">
-                    <p>Cart ({{ cart }})</p>
-                <div>
-            </div>
-
-        </div>
+        <product :premium="premium"></product>
     </div>
 
     <footer>
