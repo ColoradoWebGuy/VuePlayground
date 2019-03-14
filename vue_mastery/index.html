@@ -9,7 +9,14 @@
     <div class="nav-bar"></div>
 
     <div id="app">
-        <product :premium="premium"></product>
+        <div class="cart">
+          <p>Cart({{ cart.length }})</p>
+        </div>
+
+        <!-- A component can use an event handler with the v-on directive ( @
+        for short) to listen for an event emission, which can trigger
+        a method on the parent -->
+        <product :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeFromCart"></product>
     </div>
 
     <footer>

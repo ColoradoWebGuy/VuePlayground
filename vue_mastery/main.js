@@ -46,21 +46,14 @@ Vue.component('product', {
                 >
             </div>
 
-            <!-- We can use expressions inside an element’s class binding
-                to evaluate whether a class should appear or not -->
-
-            <!-- ** You can calso bind an entire class object or array of
-                classes to an element. See ex. below -->
-            <!--  <div :class="[activeClass, errorClass]"></div> -->
             <button v-on:click="addToCart"
                 :disabled="!inStock"
                 :class="{ disabledButton: !inStock}"
                 >Add to Cart
             </button>
-
-            <div class="cart">
-                <p>Cart ({{ cart }})</p>
-            </div>
+            <br />
+            <button v-on:click="removeFromCart">Remove from Cart
+            </button>
         </div>
 
     </div>
@@ -85,13 +78,15 @@ Vue.component('product', {
                     variantQuantity: 0
                 }
             ],
-            cart: 0,
             onSale: true
         }
     },
     methods: {
         addToCart() {
-            this.cart += 1
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
+        },
+        removeFromCart() {
+            this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
         },
         updateProduct(index) {
             this.selectedVariant = index
@@ -123,6 +118,20 @@ Vue.component('product', {
 var app = new Vue({
      el: '#app',
      data: {
-         premium: true
+         premium: true,
+         cart: []
+     },
+     methods: {
+         // A parent can use data emitted from its child
+         updateCart(id) {
+           this.cart.push(id)
+          },
+         removeFromCart(id) {
+             for(var i = this.cart.length - 1; i >= 0; i--) {
+                if (this.cart[i] === id) {
+                   this.cart.splice(i, 1);
+                }
+             }
+         }
      }
  })
